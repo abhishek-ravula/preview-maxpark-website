@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "env-cmd -f .env.dev next dev --turbopack",
     "prod": "env-cmd -f .env.prod next dev --turbopack",
+    "build": "next build",
     "build-dev": "env-cmd -f .env.dev next build",
     "build-prod": "env-cmd -f .env.prod next build",
     "lint": "next lint",
