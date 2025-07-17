@@ -15,7 +15,13 @@ import { usePathname } from "next/navigation";
 
 export function Footer() {
   const pathname = usePathname();
-  const hideFooterPaths = ["/solutions/boom-barriers", "/parking-solutions"];
+
+  const hideFooterPaths = [
+    "/solutions/boom-barriers",
+    "/solutions/boom-barriers/",
+    "/parking-solutions",
+    "/parking-solutions/",
+  ];
 
   if (hideFooterPaths.includes(pathname)) {
     return null;

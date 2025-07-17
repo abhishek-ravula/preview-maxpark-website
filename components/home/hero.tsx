@@ -16,7 +16,8 @@ export function Hero() {
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
 
-  const isParkingSolutionsPage = pathname === "/parking-solutions";
+  const isParkingSolutionsPage =
+    pathname === "/parking-solutions" || pathname === "/parking-solutions/";
 
   useEffect(() => {
     setMounted(true);

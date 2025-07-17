@@ -54,7 +54,11 @@ export function Navigation() {
   const router = useRouter();
 
   const scrollToContact = () => {
-    if (pathname !== "/" && pathname !== "/parking-solutions") {
+    if (
+      pathname !== "/" &&
+      pathname !== "/parking-solutions" &&
+      pathname !== "/parking-solutions/"
+    ) {
       // If not on the home page, navigate to home with the hash
       router.push("/#contact-form");
     } else {

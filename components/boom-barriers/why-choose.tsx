@@ -32,6 +32,13 @@ export function BoomBarrierWhyChoose() {
     },
   ];
 
+  const scrollToContact = () => {
+    const element = document.getElementById("contact-form");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-orange-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,12 +93,7 @@ export function BoomBarrierWhyChoose() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                onClick={() => {
-                  const element = document.getElementById("contact");
-                  if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
+                onClick={scrollToContact}
                 className="gradient-primary text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity"
               >
                 Get Free Consultation
