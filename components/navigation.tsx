@@ -86,7 +86,10 @@ export function Navigation() {
 
   // Determine if we should use light text (for transparent nav) or dark text (for solid nav)
   const useLightText =
-    (pathname === "/" || pathname === "/parking-solutions") && !isScrolled;
+    (pathname === "/" ||
+      pathname === "/parking-solutions" ||
+      pathname === "/parking-solutions/") &&
+    !isScrolled;
 
   return (
     <nav
