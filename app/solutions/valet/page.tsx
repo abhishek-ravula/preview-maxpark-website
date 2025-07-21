@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Users,
   Clock,
@@ -11,6 +13,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ValetHeroButtons } from "@/components/valet/hero-buttons";
+import { useRouter } from "next/navigation";
 
 const features = [
   {
@@ -168,6 +171,12 @@ const workflow = [
 ];
 
 export default function ValetPage() {
+  const router = useRouter();
+
+  const scrollToContact = () => {
+    router.push("/#contact-form");
+  };
+
   return (
     <div className="pt-16">
       {/* Hero Section */}
@@ -367,7 +376,7 @@ export default function ValetPage() {
       </section>
 
       {/* Workflow Section */}
-      <section className="py-20 bg-slate-900" id="how-valet-works">
+      <section className="py-20 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -379,7 +388,45 @@ export default function ValetPage() {
             </p>
           </div>
 
-          <div className="space-y-8">
+          {/* Mobile Layout - Vertical Stack */}
+          <div className="block md:hidden space-y-6">
+            {workflow.map((step, index) => (
+              <div key={index} className="glass rounded-2xl p-6">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
+                      <span className="text-lg font-bold text-white">
+                        {step.step}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
+                        <step.icon className="w-4 h-4 text-white" />
+                      </div>
+                      <h3 className="text-lg font-bold text-white">
+                        {step.title}
+                      </h3>
+                    </div>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+                {/* {index < workflow.length - 1 && (
+                  <div className="flex justify-center mt-4">
+                    <div className="w-6 h-6 border-2 border-orange-500 rounded-full flex items-center justify-center">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                    </div>
+                  </div>
+                )} */}
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop Layout - Horizontal with Connecting Lines */}
+          <div className="hidden md:block space-y-8">
             {workflow.map((step, index) => (
               <div key={index} className="flex items-center space-x-8">
                 <div className="flex-shrink-0">
@@ -404,13 +451,13 @@ export default function ValetPage() {
                   </div>
                 </div>
 
-                {/* {index < workflow.length - 1 && ( */}
-                <div className="flex-shrink-0">
-                  <div className="w-8 h-8 border-2 border-orange-500 rounded-full flex items-center justify-center">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                {/* {index < workflow.length - 1 && (
+                  <div className="flex-shrink-0">
+                    <div className="w-8 h-8 border-2 border-orange-500 rounded-full flex items-center justify-center">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                    </div>
                   </div>
-                </div>
-                {/* )} */}
+                )} */}
               </div>
             ))}
           </div>
@@ -473,7 +520,10 @@ export default function ValetPage() {
               revolutionized their valet services with MaxPark.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="gradient-primary text-white hover:opacity-90 transition-opacity">
+              <Button
+                className="gradient-primary text-white hover:opacity-90 transition-opacity"
+                onClick={scrollToContact}
+              >
                 {/* Schedule a Demo */}
                 Talk to Our Team
               </Button>
